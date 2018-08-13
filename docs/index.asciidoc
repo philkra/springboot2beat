@@ -1,0 +1,5 @@
+= Springboot2beat Docs
+
+Welcome to the Springboot2beat documentation.
+
+

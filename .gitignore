@@ -1,0 +1,7 @@
+/.idea
+/build
+
+.DS_Store
+/springboot2beat
+/springboot2beat.test
+*.pyc
