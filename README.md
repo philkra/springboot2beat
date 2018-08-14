@@ -98,4 +98,4 @@ To run Springboot2beat:
 * create Kibana dashboards
 
 ## Developer Reference
-Please refer to the developers guide using this link [here](https://github.com/philkra/springboot2beat/blob/master/docs/developer-guide.md).
+Please refer to the developers guide using this link [here](https://github.com/philkra/springboot2beat/blob/development/docs/developer-guide.md).
