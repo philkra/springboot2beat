@@ -4,7 +4,39 @@
 
 springboot2beat:
   # Defines how often an event is sent to the output
-  period: 1s
+  period: 15s
+  # Spring Boot 2 - Managment Adress
+  host: "http://127.0.0.1:9001"
+  # Metrics to "beat"
+  metrics:
+    - "jvm.memory.max"
+    - "jvm.memory.used"
+    - "jvm.memory.committed"
+    - "jvm.threads.daemon"
+    - "jvm.threads.live"
+    - "jvm.threads.peak"
+    - "jvm.buffer.memory.used"
+    - "jvm.buffer.count"
+    - "jvm.buffer.total.capacity"
+    - "jvm.gc.memory.promoted"
+    - "jvm.gc.max.data.size"
+    - "jvm.gc.pause"
+    - "jvm.gc.memory.allocated"
+    - "http.server.requests.percentile"
+    - "http.server.requests.histogram"
+    - "http.server.requests"
+    - "system.load.average.1m"
+    - "system.cpu.usage"
+    - "tomcat.global.request.max"
+    - "tomcat.global.request"
+    - "tomcat.global.error"
+    - "tomcat.global.received"
+    - "tomcat.sessions.active.max"
+    - "tomcat.sessions.created"
+    - "tomcat.sessions.expired"
+    - "tomcat.sessions.rejected"
+    - "tomcat.sessions.active.current"
+    - "tomcat.sessions.alive.max"
 
 #================================ General =====================================
 

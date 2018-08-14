@@ -2,8 +2,24 @@
   title: springboot2beat
   description:
   fields:
-    - name: counter
-      type: long
+    - name: "jvm_memory_max_value"
+      type: float
       required: true
-      description: >
-        PLEASE UPDATE DOCUMENTATION
+    - name: "jvm_memory_used_value"
+      type: float
+      required: true
+    - name: "jvm_memory_committed_value"
+      type: float
+      required: true
+    - name: "jvm_threads_daemon_value"
+      type: float
+    - name: "jvm_threads_live_value"
+      type: float
+    - name: "jvm_threads_peak_value"
+      type: float
+    - name: "jvm_buffer_memory_used_value"
+      type: float
+    - name: "jvm_buffer_count_value"
+      type: float
+    - name: "jvm_buffer_total_capacity_value"
+      type: float

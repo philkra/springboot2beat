@@ -43,24 +43,13 @@ func (bt *Springboot2beat) Run(b *beat.Beat) error {
 	}
 
 	ticker := time.NewTicker(bt.config.Period)
-	counter := 1
 	for {
+        bt.ProcessMetricsActuator(b)
 		select {
 		case <-bt.done:
 			return nil
 		case <-ticker.C:
 		}
-
-		event := beat.Event{
-			Timestamp: time.Now(),
-			Fields: common.MapStr{
-				"type":    b.Info.Name,
-				"counter": counter,
-			},
-		}
-		bt.client.Publish(event)
-		logp.Info("Event sent")
-		counter++
 	}
 }
 
