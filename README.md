@@ -94,7 +94,7 @@ To run Springboot2beat:
 ## TODO's
 * add basic authentication with credentials passed via config file
 * Tests
-* leverage micrometer's (Percentiles, Histogram and SLA)[https://micrometer.io/docs/concepts#_histograms_and_percentiles] feature (if possible)
+* leverage micrometer's [Percentiles, Histogram and SLA](https://micrometer.io/docs/concepts#_histograms_and_percentiles) feature, if possible
 * create Kibana dashboards
 
 ## Developer Reference
