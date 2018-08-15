@@ -23,7 +23,7 @@ management:
         port: 9001
         address: 127.0.0.1
 ```
-A security based suggestion would be change the management port and accessible hosts to ensure the actuator endpoints are not accessible to the public.
+A security based suggestion would be change the management port and accessible hosts to ensure the actuator endpoints are not accessible to the public, [documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-monitoring.html#production-ready-customizing-management-server-address).
 
 In order to view all available metrics:
 ```bash
