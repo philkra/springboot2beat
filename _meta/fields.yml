@@ -4,22 +4,39 @@
   fields:
     - name: "jvm_memory_max_value"
       type: float
-      required: true
     - name: "jvm_memory_used_value"
       type: float
-      required: true
     - name: "jvm_memory_committed_value"
       type: float
-      required: true
     - name: "jvm_threads_daemon_value"
-      type: float
+      type: long
     - name: "jvm_threads_live_value"
-      type: float
+      type: long
     - name: "jvm_threads_peak_value"
-      type: float
+      type: long
     - name: "jvm_buffer_memory_used_value"
-      type: float
+      type: long
     - name: "jvm_buffer_count_value"
-      type: float
+      type: long
     - name: "jvm_buffer_total_capacity_value"
+      type: float
+    - name: "http_server_requests_count"
+      type: long
+    - name: "http_server_requests_max"
+      type: long
+    - name: "http_server_requests_total_time"
+      type: float
+    - name: "jvm_gc_live_data_size_value"
+      type: float
+    - name: "jvm_gc_max_data_size_value"
+      type: float
+    - name: "jvm_gc_memory_allocated_count"
+      type: float
+    - name: "jvm_gc_memory_promoted_count"
+      type: float
+    - name: "jvm_gc_pause_count"
+      type: long
+    - name: "jvm_gc_pause_max"
+      type: long
+    - name: "jvm_gc_pause_total_time"
       type: float

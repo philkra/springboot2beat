@@ -2,7 +2,7 @@
 
 Welcome to Springboot2beat.
 
-Springboot2beat is a [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/master/index.html) that leverages the [micrometer.io](http://micrometer.io/) application metrics facade via web, which is an instrumentation framework integrated in the [Spring Boot framework starting with version 2](https://spring.io/blog/2018/03/16/micrometer-spring-boot-2-s-new-application-metrics-collector).
+Springboot2beat is a [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/master/index.html) that leverages the [micrometer.io](http://micrometer.io/) application metrics facade via web, which is an instrumentation framework integrated in the [Spring Boot framework starting with version 2](https://spring.io/blog/2018/03/16/micrometer-spring-boot-2-s-new-application-metrics-collector). All by the endpoint exposed metrics are ingested.
 
 ## Getting Started with Springboot2beat
 
@@ -25,12 +25,13 @@ management:
 ```
 A security based suggestion would be change the management port and accessible hosts to ensure the actuator endpoints are not accessible to the public.
 
-### Config
-In the `springboot2beat.yml` file you need to set the host name of the "to be watched" Spring Boot 2 web app. Furthermore, is this the place where you define the ingestion service, may that be logstash or elasticsearch.
-The metrics section defines which metrics are collected. In order to view all available metrics:
+In order to view all available metrics:
 ```bash
 curl -XGET http://HOST:PORT/actuator/metrics
 ```
+
+### Config
+In the `springboot2beat.yml` file you need to set the host name of the "to be watched" Spring Boot 2 web app. Furthermore, is this the place where you define the ingestion service, may that be logstash or elasticsearch.
 
 ### Run
 To run Springboot2beat:

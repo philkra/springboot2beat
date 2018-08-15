@@ -24,6 +24,13 @@ type HttpResponse struct {
 }
 
 //
+// Metrics List
+//
+type MetricsList struct {
+    Names []string `json: "names"`
+}
+
+//
 // Metric Endpoint Response
 //
 type Metric struct {
@@ -77,8 +84,14 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
     var ch chan HttpResponse = make(chan HttpResponse)
     url := fmt.Sprintf("%s/actuator/metrics", bt.config.Host)
 
+    // Fetch all available Metric Endpoints
+    go DoHttpGet(url, ch)
+    response := <-ch
+    list     := MetricsList{}
+    json.Unmarshal(response.Body, &list)
+
     // Commit Metric Requests
-    for _, metric := range(bt.config.Metrics) {
+    for _, metric := range(list.Names) {
         go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
     }
 
@@ -88,7 +101,7 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
     }
 
     // Join Results to Event
-    for range(bt.config.Metrics) {
+    for range(list.Names) {
         response := <-ch
         metric   := Metric{}
         json.Unmarshal(response.Body, &metric)
@@ -106,5 +119,5 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
         Fields: fields,
     }
     bt.client.Publish(event)
-    logp.Info(fmt.Sprintf("Event with %d metrics sent."), len(fields))
+    logp.Info(fmt.Sprintf("Event with %d metrics sent.", len(fields)))
 }
