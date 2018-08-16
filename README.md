@@ -93,10 +93,10 @@ To run Springboot2beat:
 ```
 
 ## TODO's
-* Option to add a list of metrics endpoints that can be excluded
-* Tests
-* leverage micrometer's [Percentiles, Histogram and SLA](https://micrometer.io/docs/concepts#_histograms_and_percentiles) feature, if possible
-* create Kibana dashboards
+- [x] Option to add a list of metrics endpoints that can be excluded
+- [ ] Tests
+- [ ] leverage micrometer's [Percentiles, Histogram and SLA](https://micrometer.io/docs/concepts#_histograms_and_percentiles) feature, if possible
+- [ ] create Kibana dashboards
 
 ## Developer Reference
 Please refer to the developers guide using this link [here](https://github.com/philkra/springboot2beat/blob/development/docs/developer-guide.md).

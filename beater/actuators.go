@@ -92,9 +92,11 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
     json.Unmarshal(response.Body, &list)
 
     // Commit Metric Requests
+    requests := 0
     for _, metric := range(list.Names) {
         if existsIn(metric, bt.config.Exclude) == false {
             go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
+            requests++
         }
     }
 
@@ -102,10 +104,10 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
     fields := common.MapStr{
         "type": b.Info.Name,
     }
-
+    logp.Info(fmt.Sprintf("%d - %d", len(list.Names), requests))
     // Join Results to Event
     expr := regexp.MustCompile(`(\.|:)`)
-    for range(list.Names) {
+    for it := 0; it < requests; it++ {
         response := <-ch
         metric   := Metric{}
         json.Unmarshal(response.Body, &metric)

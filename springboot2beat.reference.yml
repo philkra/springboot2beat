@@ -7,6 +7,11 @@ springboot2beat:
   period: 15s
   # Spring Boot 2 - Managment Adress
   host: "http://127.0.0.1:9001"
+  # List of Metrics that shall be excluded from the collection
+  exclude:
+    # Examples
+    # - "system.load.average.1m"
+    # - "tomcat.global.error"
 
 #================================ General ======================================
 
