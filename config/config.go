@@ -7,12 +7,11 @@ import "time"
 
 type Config struct {
 	Period  time.Duration `config:"period"`
-    Scheme  string        `config:"scheme"`
     Host    string        `config:"host"`
-    Port    uint          `config:"port"`
-    Metrics []string      `config:"metrics"`
+    Exclude []string      `config:"exclude"`
 }
 
 var DefaultConfig = Config{
-	Period:   1 * time.Second,
+	Period:  1 * time.Second,
+	Exclude: []string{},
 }

@@ -92,7 +92,9 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
 
     // Commit Metric Requests
     for _, metric := range(list.Names) {
-        go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
+        if existsIn(metric, bt.config.Exclude) == false {
+            go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
+        }
     }
 
     // Init Metrics Map
