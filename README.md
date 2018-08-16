@@ -93,7 +93,7 @@ To run Springboot2beat:
 ```
 
 ## TODO's
-* add basic authentication with credentials passed via config file
+* Option to add a list of metrics endpoints that can be excluded
 * Tests
 * leverage micrometer's [Percentiles, Histogram and SLA](https://micrometer.io/docs/concepts#_histograms_and_percentiles) feature, if possible
 * create Kibana dashboards

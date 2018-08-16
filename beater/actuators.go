@@ -4,6 +4,7 @@ import(
     "fmt"
     "time"
     "strings"
+    "regexp"
 
     "net/http"
     "io/ioutil"
@@ -92,7 +93,9 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
 
     // Commit Metric Requests
     for _, metric := range(list.Names) {
-        go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
+        if existsIn(metric, bt.config.Exclude) == false {
+            go DoHttpGet(fmt.Sprintf("%s/%s", url, metric), ch)
+        }
     }
 
     // Init Metrics Map
@@ -101,11 +104,12 @@ func (bt *Springboot2beat) ProcessMetricsActuator(b *beat.Beat) {
     }
 
     // Join Results to Event
+    expr := regexp.MustCompile(`(\.|:)`)
     for range(list.Names) {
         response := <-ch
         metric   := Metric{}
         json.Unmarshal(response.Body, &metric)
-        prefix := strings.Replace(metric.Name, ".", "_", -1)
+        prefix := expr.ReplaceAllString(metric.Name, "_")
         for _, measurement := range(metric.Measurements) {
             key := fmt.Sprintf("%s_%s", prefix, strings.ToLower(measurement.Statistic))
             fields[key] = measurement.Value
